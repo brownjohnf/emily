@@ -1,6 +1,6 @@
 # Emily
 
-TODO: Write a gem description
+This is part of an experiment messing around with creating a Sinatra/Rails -esque framework for recreational purposes. Not intended for production.
 
 ## Installation
 
@@ -18,7 +18,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Well, it's not really ready to be used normally, but you can shoehorn it in by creating a new folder, install the gem, and throw something like this in `config.ru`:
+
+````
+require './config/application'
+run YourApp::Application.new
+````
+
+Then create `config/application.rb` and throw in:
+
+````
+require "emily"
+
+$LOAD_PATH << File.join(File.dirname(__FILE__),
+                        '..', 
+                        'app', 
+                        'controllers')
+require "your_controller"
+
+module YourApp
+  class Application < Emily::Application
+  end
+end
+````
+
+Or something like that... As noted, I just started it.
 
 ## Contributing
 
